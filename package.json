@@ -1,0 +1,23 @@
+{
+  "name": "mearn-course",
+  "version": "1.0.0",
+  "description": "Mern stack",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chernetskiy-ivan/mearn-course.git"
+  },
+  "keywords": [
+    "mern",
+    "react"
+  ],
+  "author": "Ivan Chernetskiy <ivanchernetskey@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chernetskiy-ivan/mearn-course/issues"
+  },
+  "homepage": "https://github.com/chernetskiy-ivan/mearn-course#readme"
+}
