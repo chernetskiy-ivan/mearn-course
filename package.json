@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/chernetskiy-ivan/mearn-course/issues"
   },
-  "homepage": "https://github.com/chernetskiy-ivan/mearn-course#readme"
+  "homepage": "https://github.com/chernetskiy-ivan/mearn-course#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7"
+  }
 }
