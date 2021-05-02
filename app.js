@@ -1,8 +1,13 @@
 const express = require('express')
 const config = require('config')
-const mongoose = require('mongoose') //подключаем покет mongoose для подключения к базе данных MongoDB
+const mongoose = require('mongoose') //подключаем пакет mongoose для подключения к базе данных MongoDB
 
 const app = express() //наш будущий сервер
+
+//регистрируем роуты
+//вторым параметром передаем роут
+app.use('/api/auth', require('./routes/auth.routes'))
+
 
 const PORT = config.get('port') || 5000
 
