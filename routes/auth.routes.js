@@ -1,12 +1,31 @@
 const {Router} = require('express')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs') //либа для хеширования, сравнения и т.д. с паролями
+const {check, validationResult} = require('express-validator')
 const User = require('../models/User') //подключаем модель User
 const router = Router() //создаем роут
 
 //добавляем post запросы
 // /api/auth/register
-router.post('/register', async (req, res) => {
+router.post(
+    '/register',
+    [
+        //проверяю email
+        check('email', 'Некорректный email').isEmail(),
+        //проверяю длинну пароля
+        check('password', 'Минимальная длинна пароля 6 символов').isLength({min: 6})
+    ],
+    async (req, res) => {
     try {
+        const errors = validationResult(req)
+
+        //еслт есть какие-то ошибки
+        if(!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Некорректные данные при регистрации'
+            })
+        }
+
         const {email, password} = req.body
 
         const candidate = await User.findOne({email: email})
