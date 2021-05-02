@@ -1,6 +1,6 @@
 const {Router} = require('express')
-//создаем роут
-const router = Router()
+const User = require('../models/User') //подключаем модель User
+const router = Router() //создаем роут
 
 //добавляем post запросы
 // /api/auth/register
