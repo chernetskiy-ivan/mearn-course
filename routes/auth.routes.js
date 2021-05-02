@@ -8,6 +8,7 @@ const router = Router() //создаем роут
 // /api/auth/register
 router.post(
     '/register',
+    //добавляем массив валидаторов
     [
         //проверяю email
         check('email', 'Некорректный email').isEmail(),
@@ -53,9 +54,31 @@ router.post(
 
 
 // /api/auth/login
-router.post('/login', async (req, res) => {
+router.post(
+    '/login',
+    //добавляем массив валидаторов
+    [
+        check('email', 'Введите корректный email').normalizeEmail().isEmail(),
+        check('paaword', 'Введите пароль').exists()
+    ],
+    async (req, res) => {
+        try {
+            const errors = validationResult(req)
 
-})
+            //еслт есть какие-то ошибки
+            if(!errors.isEmpty()) {
+                return res.status(400).json({
+                    errors: errors.array(),
+                    message: 'Некорректные данные при входе в систему'
+                })
+            }
+
+
+
+        } catch(e) {
+            res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        }
+    })
 
 //роут это middleware в express
 //экспортируем объект роута из модуля
