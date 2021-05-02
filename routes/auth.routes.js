@@ -1,4 +1,5 @@
 const {Router} = require('express')
+const bcrypt = require('bcryptjs')
 const User = require('../models/User') //подключаем модель User
 const router = Router() //создаем роут
 
