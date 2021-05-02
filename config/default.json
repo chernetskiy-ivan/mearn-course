@@ -1,4 +1,5 @@
 {
   "port": 5000,
+  "jwtSecret": "ivan mern-course",
   "mongoUri": "mongodb+srv://ivan:qweasd@cluster0.udsah.mongodb.net/app?retryWrites=true&w=majority"
 }
