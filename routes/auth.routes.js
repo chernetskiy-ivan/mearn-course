@@ -19,7 +19,7 @@ router.post(
     try {
         const errors = validationResult(req)
 
-        //еслт есть какие-то ошибки
+        //если есть какие-то ошибки
         if(!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array(),
@@ -65,7 +65,7 @@ router.post(
         try {
             const errors = validationResult(req)
 
-            //еслт есть какие-то ошибки
+            //если есть какие-то ошибки
             if(!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
@@ -73,7 +73,20 @@ router.post(
                 })
             }
 
+            const {email, password} = req.body
 
+            const user = new User.findOne({ email })
+
+            if(!user) {
+                return res.status(400).json({ message: 'Пользователь не найден' })
+            }
+
+            //сравниваю пароль с паролем в базе
+            const isMatch = await bvrypt.compare(password, user.password)
+
+            if(!isMatch) {
+                return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' })
+            }
 
         } catch(e) {
             res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
