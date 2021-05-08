@@ -7,13 +7,36 @@ export const AuthPage = () => {
                 <h1>Сократи ссылку</h1>
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Card Title</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                        <span className="card-title">Авторизация</span>
+                        <div>
+
+                            <div className="input-field">
+                                <input
+                                    placeholder="Введите email"
+                                    id="email"
+                                    type="text"
+                                    name="email"
+                                    className="yellow-input"
+                                />
+                                    <label htmlFor="email">Email</label>
+                            </div>
+
+                            <div className="input-field">
+                                <input
+                                    placeholder="Введите пароль"
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    className="yellow-input"
+                                />
+                                <label htmlFor="password">Password</label>
+                            </div>
+
+                        </div>
                     </div>
                     <div className="card-action">
-                        <a href="#">This is a link</a>
-                        <a href="#">This is a link</a>
+                        <button className="btn yellow darken-4" style={{marginRight: 10}}>Войти</button>
+                        <button className="btn grey lighten-1 black-text">Регистрация</button>
                     </div>
                 </div>
             </div>
