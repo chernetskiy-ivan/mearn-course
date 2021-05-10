@@ -4,6 +4,9 @@ const mongoose = require('mongoose') //подключаем пакет mongoose 
 
 const app = express() //наш будущий сервер
 
+//добавляю новый middleware
+app.use(express.json({extended: true}))
+
 //регистрируем роуты
 //вторым параметром передаем роут
 app.use('/api/auth', require('./routes/auth.routes'))

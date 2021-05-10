@@ -19,6 +19,7 @@ router.post(
     ],
     async (req, res) => {
     try {
+        console.log('Body:', req.body)
         const errors = validationResult(req)
 
         //если есть какие-то ошибки
