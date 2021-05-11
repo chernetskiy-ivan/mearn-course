@@ -25,6 +25,13 @@ export const AuthPage = () => {
         } catch (e) {}
     }
 
+    const loginHandler = async () => {
+        try {
+            const data = await request('/api/auth/login', 'POST', {...form})
+            message(data.message)
+        } catch (e) {}
+    }
+
     return (
         <div className="row">
             <div className="col s6 offset-s3">
@@ -66,6 +73,7 @@ export const AuthPage = () => {
                             style={{marginRight: 10}}
                             //если идет загрузка - то сделать кнопки недостепными
                             disabled={loading}
+                            onClick={loginHandler}
                         >
                             Войти
                         </button>

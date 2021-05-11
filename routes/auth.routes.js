@@ -19,7 +19,6 @@ router.post(
     ],
     async (req, res) => {
     try {
-        console.log('Body:', req.body)
         const errors = validationResult(req)
 
         //если есть какие-то ошибки
@@ -62,12 +61,12 @@ router.post(
     //добавляем массив валидаторов
     [
         check('email', 'Введите корректный email').normalizeEmail().isEmail(),
-        check('paaword', 'Введите пароль').exists()
+        check('password', 'Введите пароль').exists()
     ],
     async (req, res) => {
         try {
             const errors = validationResult(req)
-
+            console.log('body', req.body)
             //если есть какие-то ошибки
             if(!errors.isEmpty()) {
                 return res.status(400).json({
@@ -78,14 +77,14 @@ router.post(
 
             const {email, password} = req.body
 
-            const user = new User.findOne({ email })
+            const user = await User.findOne({ email })
 
             if(!user) {
                 return res.status(400).json({ message: 'Пользователь не найден' })
             }
 
             //сравниваю пароль с паролем в базе
-            const isMatch = await bvrypt.compare(password, user.password)
+            const isMatch = await bcrypt.compare(password, user.password)
 
             if(!isMatch) {
                 return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' })
@@ -100,6 +99,7 @@ router.post(
             res.json({ token, userId: user.id })
 
         } catch(e) {
+            console.log(e.message)
             res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         }
     })
