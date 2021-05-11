@@ -11,7 +11,7 @@ export const useAuth = () => {
         setUserId(id)
 
         //записываем в localStorage
-        localStorage.setItem(storageName, JSON.stringify({userId, token}))
+        localStorage.setItem(storageName, JSON.stringify({userId: id, token: jwtToken}))
     },[])
 
     const logout = useCallback(() => {
