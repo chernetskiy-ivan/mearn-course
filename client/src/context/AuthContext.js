@@ -2,7 +2,7 @@ import {createContext} from 'react'
 
 function noop() {}
 
-export const Authcontext = createContext({
+export const AuthContext = createContext({
     token: null,
     userId: null,
     login: noop,
