@@ -66,7 +66,7 @@ router.post(
     async (req, res) => {
         try {
             const errors = validationResult(req)
-            console.log('body', req.body)
+
             //если есть какие-то ошибки
             if(!errors.isEmpty()) {
                 return res.status(400).json({
@@ -99,7 +99,6 @@ router.post(
             res.json({ token, userId: user.id })
 
         } catch(e) {
-            console.log(e.message)
             res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         }
     })
