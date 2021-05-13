@@ -10,6 +10,7 @@ app.use(express.json({extended: true}))
 //регистрируем роуты
 //вторым параметром передаем роут
 app.use('/api/auth', require('./routes/auth.routes'))
+app.use('/api/link', require('./routes/link.routes'))
 
 
 const PORT = config.get('port') || 5000
