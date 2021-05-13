@@ -6,6 +6,10 @@ const router = Router()
 
 router.post('/generate', async (req,res) => {
     try {
+        const baseUrl = config.get('baseUrl')
+        const {from} = req.body
+
+
 
     } catch(e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
