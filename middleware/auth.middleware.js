@@ -3,7 +3,7 @@
 const jwt = require('jsonwebtoken')
 const config = require('config')
 
-module.exports = (req, res,next) => {
+module.exports = (req, res, next) => {
     //проверям доступен ли сервер
     if(req.method === 'OPTIONS') {
         //продолжаем делать запрос
