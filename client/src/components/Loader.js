@@ -19,5 +19,4 @@ export const Loader = () => {
             </div>
         </div>
     )
-
 }
