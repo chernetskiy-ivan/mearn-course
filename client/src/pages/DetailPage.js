@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import {useHttp} from "../hooks/http.hooks"
 import {AuthContext} from "../context/AuthContext"
 import {Loader} from "../components/Loader";
+import {LinkCard} from "../components/LinkCard";
 
 export const DetailPage = () => {
     //использую токен потому что его добавляю в зависимости
@@ -29,9 +30,9 @@ export const DetailPage = () => {
     }
 
     return (
+        //если не loading и есть link то показываем компонент LinkCard
         <>
-            //если не loading и есть link то показываем компонент LinkCard
-            {!loading && link && <LinkCard /> }
+            {!loading && link && <LinkCard link={link} /> }
         </>
     )
 }
