@@ -2,10 +2,11 @@ import React, {useState, useContext, useCallback, useEffect} from 'react'
 import {useHttp} from "../hooks/http.hooks";
 import {AuthContext} from "../context/AuthContext";
 import {Loader} from "../components/Loader";
+import {LinksList} from '../components/LinksList'
 
 export const LinksPage = () => {
-    const [link, setLinks] = useState([])
-    const {loader, loading, request} = useHttp()
+    const [links, setLinks] = useState([])
+    const {loading, request} = useHttp()
     const {token} = useContext(AuthContext)
 
     const fetchLinks = useCallback(async () => {
